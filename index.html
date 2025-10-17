@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FBR Digital Invoicing System - Pitch Deck</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 20px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 14px;
+            opacity: 0.5;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #60a5fa;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #93c5fd;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #cbd5e1;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: #a5b4fc;
+            font-weight: 300;
+            margin-top: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .highlight {
+            color: #60a5fa;
+            font-weight: 600;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 50px;
+            gap: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-top: 10px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .tech-badge {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            background: rgba(59, 130, 246, 0.4);
+            transform: scale(1.05);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.5);
+        }
+
+        .features-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .features-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            color: #3b82f6;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        .roadmap-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3b82f6;
+            transition: all 0.3s ease;
+        }
+
+        .roadmap-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(10px);
+        }
+
+        .contact-info {
+            background: rgba(59, 130, 246, 0.1);
+            padding: 40px;
+            border-radius: 16px;
+            margin-top: 40px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.5rem; }
+            p { font-size: 1rem; }
+            .tagline { font-size: 1.2rem; }
+            .two-column { grid-template-columns: 1fr; }
+            .stat-number { font-size: 3rem; }
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: rgba(59, 130, 246, 0.3);
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn:hover {
+            background: rgba(59, 130, 246, 0.6);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Slide 1: Title -->
+        <div class="slide" id="slide1">
+            <div class="slide-number">1/12</div>
+            <h1>FBR Digital Invoicing System</h1>
+            <p class="tagline">Simplifying Tax Compliance for Pakistani Businesses</p>
+            <p style="font-size: 1.3rem; margin-top: 40px;">A comprehensive, enterprise-grade invoicing solution with seamless FBR integration</p>
+            <div class="tech-stack">
+                <span class="tech-badge">Next.js 15</span>
+                <span class="tech-badge">TypeScript</span>
+                <span class="tech-badge">PostgreSQL</span>
+                <span class="tech-badge">Prisma ORM</span>
+                <span class="tech-badge">FBR API Integration</span>
+            </div>
+        </div>
+
+        <!-- Slide 2: The Problem -->
+        <div class="slide" id="slide2">
+            <div class="slide-number">2/12</div>
+            <h2>The Problem</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="icon">⚠️</div>
+                    <h3>Complex Compliance</h3>
+                    <p>Businesses struggle with FBR's digital invoicing requirements and changing regulations</p>
+                </div>
+                <div class="card">
+                    <div class="icon">⏰</div>
+                    <h3>Time-Consuming</h3>
+                    <p>Manual invoice creation and submission wastes valuable business hours</p>
+                </div>
+                <div class="card">
+                    <div class="icon">💸</div>
+                    <h3>Costly Errors</h3>
+                    <p>Tax calculation mistakes lead to penalties and compliance issues</p>
+                </div>
+                <div class="card">
+                    <div class="icon">📊</div>
+                    <h3>Limited Visibility</h3>
+                    <p>Lack of real-time insights into invoicing and tax obligations</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: The Solution -->
+        <div class="slide" id="slide3">
+            <div class="slide-number">3/12</div>
+            <h2>Our Solution</h2>
+            <p style="font-size: 1.4rem; margin-bottom: 40px;">A modern, cloud-based platform that automates the entire invoicing lifecycle</p>
+            <div class="grid">
+                <div class="card">
+                    <div class="icon">🚀</div>
+                    <h3>Direct FBR Integration</h3>
+                    <p>Seamlessly post invoices to FBR portal with real-time validation and confirmation</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🤖</div>
+                    <h3>Automated Calculations</h3>
+                    <p>Automatic computation of sales tax, FED, further tax, and all applicable charges</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🏢</div>
+                    <h3>Multi-Tenant Architecture</h3>
+                    <p>Support multiple companies with complete data isolation and security</p>
+                </div>
+                <div class="card">
+                    <div class="icon">✅</div>
+                    <h3>Sandbox Testing</h3>
+                    <p>Test all invoices in sandbox environment before going live</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Key Features -->
+        <div class="slide" id="slide4">
+            <div class="slide-number">4/12</div>
+            <h2>Key Features</h2>
+            <div class="two-column">
+                <div>
+                    <h3>Core Capabilities</h3>
+                    <ul class="features-list">
+                        <li>Complete customer & product management</li>
+                        <li>Multi-line item invoicing</li>
+                        <li>Real-time tax calculations</li>
+                        <li>Draft, Posted, Failed workflow</li>
+                        <li>Role-based access control</li>
+                        <li>NTN/CNIC validation</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Advanced Features</h3>
+                    <ul class="features-list">
+                        <li>HS code integration</li>
+                        <li>SRO item mapping</li>
+                        <li>USIN generation</li>
+                        <li>Province & UOM management</li>
+                        <li>Discount handling</li>
+                        <li>Responsive design (mobile-ready)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Technology Stack -->
+        <div class="slide" id="slide5">
+            <div class="slide-number">5/12</div>
+            <h2>Technology Stack</h2>
+            <p>Built with modern, enterprise-grade technologies for reliability and scalability</p>
+            <div class="grid">
+                <div class="card">
+                    <h3>Frontend</h3>
+                    <p><span class="highlight">Next.js 15.5.4</span> - React framework with App Router</p>
+                    <p><span class="highlight">TypeScript</span> - Type-safe development</p>
+                    <p><span class="highlight">Tailwind CSS</span> - Modern styling</p>
+                    <p><span class="highlight">Zustand</span> - State management</p>
+                </div>
+                <div class="card">
+                    <h3>Backend</h3>
+                    <p><span class="highlight">Next.js API Routes</span> - Serverless functions</p>
+                    <p><span class="highlight">PostgreSQL</span> - Robust database</p>
+                    <p><span class="highlight">Prisma ORM</span> - Type-safe database access</p>
+                    <p><span class="highlight">JWT</span> - Secure authentication</p>
+                </div>
+                <div class="card">
+                    <h3>Infrastructure</h3>
+                    <p><span class="highlight">Vercel</span> - Fast, global deployment</p>
+                    <p><span class="highlight">Supabase</span> - Managed PostgreSQL</p>
+                    <p><span class="highlight">FBR API</span> - Official integration</p>
+                    <p><span class="highlight">Git</span> - Version control</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: FBR Integration -->
+        <div class="slide" id="slide6">
+            <div class="slide-number">6/12</div>
+            <h2>FBR Integration Details</h2>
+            <p>Comprehensive integration with Federal Board of Revenue's digital invoicing system</p>
+            <div class="card" style="margin-top: 40px;">
+                <h3>Integrated FBR APIs</h3>
+                <div class="grid">
+                    <div>
+                        <p>✓ Invoice Posting (Sandbox & Production)</p>
+                        <p>✓ Invoice Validation</p>
+                        <p>✓ Provinces Lookup</p>
+                        <p>✓ HS Codes Database</p>
+                    </div>
+                    <div>
+                        <p>✓ Transaction Types</p>
+                        <p>✓ UOM Management</p>
+                        <p>✓ SRO Items & Schedule</p>
+                        <p>✓ Registration Type Lookup</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="margin-top: 30px;">
+                <h3>Real-Time Response</h3>
+                <p>Receive immediate confirmation with <span class="highlight">FBR Invoice Number</span> and <span class="highlight">USIN</span> after successful posting</p>
+            </div>
+        </div>
+
+        <!-- Slide 7: User Flow -->
+        <div class="slide" id="slide7">
+            <div class="slide-number">7/12</div>
+            <h2>Simple User Flow</h2>
+            <div class="roadmap-item">
+                <h3>1. Registration & Setup</h3>
+                <p>Register company, create admin account, configure FBR token</p>
+            </div>
+            <div class="roadmap-item">
+                <h3>2. Data Entry</h3>
+                <p>Add customers with NTN validation, create products with HS codes</p>
+            </div>
+            <div class="roadmap-item">
+                <h3>3. Invoice Creation</h3>
+                <p>Select customer, add line items, system auto-calculates all taxes</p>
+            </div>
+            <div class="roadmap-item">
+                <h3>4. Review & Post</h3>
+                <p>Review invoice details, validate, and post directly to FBR</p>
+            </div>
+            <div class="roadmap-item">
+                <h3>5. Confirmation</h3>
+                <p>Receive FBR invoice number and USIN instantly</p>
+            </div>
+        </div>
+
+        <!-- Slide 8: Market Opportunity -->
+        <div class="slide" id="slide8">
+            <div class="slide-number">8/12</div>
+            <h2>Market Opportunity</h2>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">1M+</div>
+                    <div class="stat-label">Registered Businesses in Pakistan</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">FBR Compliance Required</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">Growing</div>
+                    <div class="stat-label">Digital Transformation</div>
+                </div>
+            </div>
+            <p style="margin-top: 60px; font-size: 1.3rem; text-align: center;">
+                Every business in Pakistan needs FBR-compliant invoicing. <br/>
+                <span class="highlight">This is a mandatory requirement, not optional.</span>
+            </p>
+        </div>
+
+        <!-- Slide 9: Competitive Advantages -->
+        <div class="slide" id="slide9">
+            <div class="slide-number">9/12</div>
+            <h2>Why Choose Us?</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="icon">⚡</div>
+                    <h3>Fast & Efficient</h3>
+                    <p>Create and post invoices in under 2 minutes</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🔒</div>
+                    <h3>Secure & Reliable</h3>
+                    <p>Enterprise-grade security with data encryption</p>
+                </div>
+                <div class="card">
+                    <div class="icon">💰</div>
+                    <h3>Cost-Effective</h3>
+                    <p>Eliminate manual errors and reduce compliance costs</p>
+                </div>
+                <div class="card">
+                    <div class="icon">📱</div>
+                    <h3>Access Anywhere</h3>
+                    <p>Responsive design works on desktop, tablet, and mobile</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🎯</div>
+                    <h3>100% FBR Compliant</h3>
+                    <p>Always up-to-date with latest FBR requirements</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🛠️</div>
+                    <h3>Easy Integration</h3>
+                    <p>Quick setup with comprehensive documentation</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Roadmap -->
+        <div class="slide" id="slide10">
+            <div class="slide-number">10/12</div>
+            <h2>Product Roadmap</h2>
+            <div class="two-column">
+                <div>
+                    <h3>Phase 1 (Current)</h3>
+                    <div class="roadmap-item">
+                        <p>✓ Core invoicing features</p>
+                        <p>✓ FBR integration</p>
+                        <p>✓ Customer & product management</p>
+                        <p>✓ Multi-tenant support</p>
+						<p>✓ PDF invoice generation</p>                        
+                    </div>
+                    <h3 style="margin-top: 30px;">Phase 2</h3>
+                    <div class="roadmap-item">
+                        <p>Email notifications</p>
+                        <p>Advanced reporting</p>
+                        <p>Bulk operations</p>
+                        <p>Audit logs</p>
+                        <p>API for third-party integration</p>
+                    </div>
+                </div>                
+            </div>
+        </div>
+
+        <!-- Slide 11: By The Numbers -->
+        <div class="slide" id="slide11">
+            <div class="slide-number">11/12</div>
+            <h2>By The Numbers</h2>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">48</div>
+                    <div class="stat-label">API Endpoints</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">11</div>
+                    <div class="stat-label">Frontend Pages</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Total Files</div>
+                </div>
+            </div>
+            <div class="stats" style="margin-top: 50px;">
+                <div class="stat-item">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">Lines of Code</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">Database Tables</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">TypeScript</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Call to Action -->
+        <div class="slide" id="slide12">
+            <div class="slide-number">12/12</div>
+            <h2>Let's Transform Tax Compliance Together</h2>
+            <p style="font-size: 1.4rem; margin-top: 30px;">Join thousands of Pakistani businesses simplifying their invoicing with FBR Digital Invoicing System</p>
+            
+            <div class="contact-info">
+                <h3>Get Started Today</h3>
+                <p>📧 Email: arslankha3@gmail.com</p>
+                <p>📱 Phone: +92 333 3176130</p>
+                <p style="margin-top: 20px;">Schedule a demo and see how we can help your business stay compliant effortlessly</p>
+            </div>
+
+            <p style="text-align: center; margin-top: 60px; opacity: 0.7;">Made with ❤️ for Pakistani Businesses</p>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" onclick="previousSlide()">←</button>
+        <button class="nav-btn" onclick="nextSlide()">→</button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 12;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            if (n > totalSlides) currentSlide = 1;
+            if (n < 1) currentSlide = totalSlides;
+            
+            slides.forEach((slide, index) => {
+                slide.style.display = (index + 1) === currentSlide ? 'flex' : 'none';
+            });
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+
+        function previousSlide() {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') previousSlide();
+        });
+
+        // Initialize
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
